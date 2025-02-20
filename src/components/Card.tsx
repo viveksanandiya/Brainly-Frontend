@@ -21,12 +21,16 @@ export function Card({title, link, type}: CardProps){
     // so the Twitter embed might not load correctly when the component re-renders
     //hence used 
     useEffect(() => {
-        if (type === "twitter") {
+        if (type === "twitter" && link) {
           const script = document.createElement("script");
           script.src = "https://platform.twitter.com/widgets.js";
           script.async = true;
           script.charset = "utf-8";
           document.body.appendChild(script);
+
+          return () => {
+            document.body.removeChild(script);
+        };
         }
       }, [type, link]);
 
@@ -42,9 +46,7 @@ export function Card({title, link, type}: CardProps){
             </div>
             <div className="flex items-center">
                 <div className="pr-2 text-gray-700">
-                    <a href="_blank">
-                        <ShareIcon/>
-                    </a>
+                    <ShareIcon/>
                 </div>
                 <div className="pr-1 fill-gray-700 text-gray-700">
                     <DeleteIcon/>

@@ -64,7 +64,8 @@ export function Dashboard() {
         </Button>
       </div>
       <div className="flex flex-wrap p-2 pt-0 gap-2 pr-2">
-        {contents.map(({type, link, title}:CardProps) => <Card 
+        {contents.map(({type, link, title}:CardProps, index) => <Card 
+            key={`${link}-${index}`}
             type={type}
             link={link}
             title={title}

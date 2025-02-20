@@ -18,7 +18,7 @@
 
 =>use recoil for adding content instead of adding useContent hook-> this is because the addContent window does not disappear when clicked on submit 
 
-=> Share brain using the the shareable link made, for this you need to create a route with path then as a file SharedBrain.tsx inside pages folder
+=>(done) Share brain using the the shareable link made, for this you need to create a route with path then as a file SharedBrain.tsx inside pages folder
 
 =>add loading thingy wihch clicked signup, ...
 
