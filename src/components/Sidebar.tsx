@@ -10,7 +10,7 @@ export function Sidebar(){
         Brainly
        </div> 
         <div>
-            <SidebarItem  text="Twitter" icon={<TwitterIcon/>}></SidebarItem>
+            <SidebarItem  text="Twitter" icon={<TwitterIcon/>} ></SidebarItem>
             <SidebarItem  text="Youtube" icon={<YoutubeIcon/>}></SidebarItem>
         </div>
     </div>

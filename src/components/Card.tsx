@@ -3,10 +3,13 @@ import { DeleteIcon } from "../icons/DeleteIcon";
 import { ShareIcon } from "../icons/ShareIcon";
 import { TwitterIcon } from "../icons/TwitterIcon";
 import { YoutubeIcon } from "../icons/YoutubeIcon";
+import axios from "axios";
+import { BACKEND_URL } from "../config";
 
 export interface CardProps{
-    title?: string,
-    link?: string,
+    id:string
+    title: string,
+    link: string,
     type: "youtube" | "twitter",
 }
 
@@ -16,7 +19,21 @@ const TypeClass ={
 }
 
 {/* store ids of yt , tweet in database -> figure it youself */}
-export function Card({title, link, type}: CardProps){
+
+export function Card({id, title, link, type}: CardProps){
+    
+    const handleDelete = async function(){
+        
+        await axios.delete(`${BACKEND_URL}/api/v1/content`,{
+            data: {contentId:id},
+            headers: {
+                Authorization: localStorage.getItem("token"),
+            },
+        })
+        
+    }
+
+
     // React does not re-run scripts dynamically,
     // so the Twitter embed might not load correctly when the component re-renders
     //hence used 
@@ -48,8 +65,8 @@ export function Card({title, link, type}: CardProps){
                 <div className="pr-2 text-gray-700">
                     <ShareIcon/>
                 </div>
-                <div className="pr-1 fill-gray-700 text-gray-700">
-                    <DeleteIcon/>
+                <div className="pr-1 fill-gray-700 text-gray-700" onClick={handleDelete}>
+                    <DeleteIcon />
                     </div>
             </div>
         </div>

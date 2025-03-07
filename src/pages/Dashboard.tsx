@@ -8,6 +8,7 @@ import { Sidebar } from "../components/Sidebar";
 import { useContent } from "../hooks/useContent";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
+import { showConfirmAlert } from "../components/SweetAlert";
 
 export function Dashboard() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -31,8 +32,19 @@ export function Dashboard() {
 
     const shareUrl = `http://localhost:5173/share/${response.data.hash}`
     
-    //copy to clipboard 
-    navigator.clipboard.writeText(shareUrl) 
+    if(!isShared){
+      const copyLink = await showConfirmAlert("Copy Brain link to CLipboard ?");
+      if(copyLink.isConfirmed){
+        //copy to clipboard 
+        navigator.clipboard.writeText(shareUrl)
+      }
+    }else{
+      const copyLink = await showConfirmAlert("Stop Brain share ?");
+      if(copyLink.isConfirmed){
+        //copy to clipboard 
+        navigator.clipboard.writeText(shareUrl)
+      }
+    }
   }
 
   return (
@@ -64,8 +76,9 @@ export function Dashboard() {
         </Button>
       </div>
       <div className="flex flex-wrap p-2 pt-0 gap-2 pr-2">
-        {contents.map(({type, link, title}:CardProps, index) => <Card 
-            key={`${link}-${index}`}
+        {contents.map(({id, type, link, title}:CardProps) => <Card 
+            key={id}
+            id={id}
             type={type}
             link={link}
             title={title}

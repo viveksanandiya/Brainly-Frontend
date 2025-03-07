@@ -4,6 +4,7 @@ import { Button } from "./Button";
 import { Input } from "./Input";
 import axios from "axios";
 import { BACKEND_URL } from "../config";
+import { showSuccessAlert } from "./SweetAlert";
 
 interface ModalProps{
     open: Boolean,
@@ -34,8 +35,9 @@ export function CreateContentModal({open, onClose}: ModalProps){
                 "Authorization":localStorage.getItem("token")
             }
         })
-
+        
         onClose();
+        showSuccessAlert("Added content !")
 
     }
 

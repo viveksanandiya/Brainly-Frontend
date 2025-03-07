@@ -5,6 +5,7 @@ import { Input } from "../components/Input";
 import {BACKEND_URL } from "../config";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../icons/Logo";
+import { showSuccessAlert } from "../components/SweetAlert";
 
 export function Signin(){
     const usernameRef = useRef<HTMLInputElement>(null);
@@ -22,6 +23,8 @@ export function Signin(){
 
         const jwt = response.data.token;
         localStorage.setItem("token",jwt);
+
+        showSuccessAlert("Signin Successful");
 
         navigate("/dashboard");
     }

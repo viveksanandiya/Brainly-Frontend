@@ -5,7 +5,7 @@ import { BACKEND_URL } from "../config";
 
 export function useContent(){
     const [contents, setContents] = useState([]);
-
+    
     function refresh(){
         // can use await so using .then
         axios.get(`${BACKEND_URL}/api/v1/content`,{headers:{
