@@ -14,8 +14,7 @@ interface ModalProps{
 
 enum ContentType {
     Youtube = "youtube",
-    Twitter = "twitter",
-    // ChatGPT = "chatgpt"
+    Twitter = "twitter"
 }
 
 export function CreateContentModal({open, onClose}: ModalProps){
@@ -41,7 +40,7 @@ export function CreateContentModal({open, onClose}: ModalProps){
         showSuccessAlert("Added content !")
 
     }
- 
+
     return <div> 
         {open && <div className="w-screen h-screen top-0 left-0 fixed flex justify-center items-center bg-gray-500 bg-opacity-75" >
                 <div className="absolute opacity-100 bg-white rounded">
@@ -54,10 +53,9 @@ export function CreateContentModal({open, onClose}: ModalProps){
                         <Input reference={titleRef} placeholder={"Title"}></Input>
                         <Input reference={linkRef} placeholder={"Link"}></Input> 
                     </div>
-                    <div className="flex justify-evenly p-2 gap-x-2">
+                    <div className="flex justify-evenly p-2">
                         <Button text="Youtube" variant={type === ContentType.Youtube ? "primary":"secondary"} onClick={()=>{setType(ContentType.Youtube)}}></Button>
                         <Button text="Twitter" variant={type === ContentType.Twitter ? "primary":"secondary"} onClick={()=>{setType(ContentType.Twitter)}}></Button>
-                        {/* <Button text="ChatGPT" variant={type === ContentType.ChatGPT ? "primary":"secondary"} onClick={()=>{setType(ContentType.ChatGPT)}}></Button> */}
                     </div>
                     <div className="flex justify-center p-2"> 
                         <Button onClick={addContent} variant="primary" text="Submit"></Button>

@@ -1,3 +1,6 @@
-export const BACKEND_URL = "https://localhost:3000"
+const config = {
+    BACKEND_URL : process.env.BACKEND_URL,
+    SHAREBRAIN_URL: process.env.SHAREBRAIN_URL
+};
 
-export const SHAREBRAIN_URL ="http://localhost:5173/share/"
+export default config;

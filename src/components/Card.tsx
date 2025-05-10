@@ -11,13 +11,11 @@ export interface CardProps{
     title: string,
     link: string,
     type: "youtube" | "twitter",
-    // type: "youtube" | "twitter" | "chatgpt",
 }
 
 const TypeClass ={
     "youtube": <YoutubeIcon/>,
     "twitter": <TwitterIcon/>,
-    // "chatgpt":"chatgpt"
 }
 
 {/* store ids of yt , tweet in database -> figure it youself */}
@@ -84,10 +82,6 @@ export function Card({id, title, link, type}: CardProps){
             </blockquote>
             </div>
             )}
-            {/* {type === "chatgpt" && link &&(
-                <iframe src="https://chatgpt.com/share/67cad977-8d30-8005-b1d0-6f3aba3cf176"></iframe>
-                
-            )} */}
         </div>
     </div>
 }

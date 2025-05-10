@@ -35,7 +35,7 @@ export function SharedBrain() {
             <div className="flex flex-wrap p-2 pt-0 gap-2 pr-2">
                 {contents.length > 0 ? (
                     contents.map(({ type, link, title }: CardProps, index) => (
-                        <Card key={`${link}-${index}`} type={type} link={link} title={title} id={""} />  
+                        <Card key={`${link}-${index}`} type={type} link={link} title={title} id="" />  
                     ))
                 ):""}
 
