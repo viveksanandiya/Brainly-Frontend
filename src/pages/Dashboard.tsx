@@ -7,7 +7,7 @@ import { ShareIcon } from "../icons/ShareIcon";
 import { Sidebar } from "../components/Sidebar";
 import { useContent } from "../hooks/useContent";
 import axios from "axios";
-import { BACKEND_URL } from "../config";
+import { BACKEND_URL, SHAREBRAIN_URL } from "../config";
 import { showConfirmAlert } from "../components/SweetAlert";
 
 export function Dashboard() {
@@ -30,7 +30,7 @@ export function Dashboard() {
 
     setIsShared(!isShared)
 
-    const shareUrl = `http://localhost:5173/share/${response.data.hash}`
+    const shareUrl = `${SHAREBRAIN_URL}${response.data.hash}`   //changes madee-----------
     
     if(!isShared){
       const copyLink = await showConfirmAlert("Copy Brain link to CLipboard ?");
